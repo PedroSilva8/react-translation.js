@@ -1,17 +1,29 @@
-## translation.js
-A translation library to help applications managing, loading and applying translations.
+## react-translation.js
+A translation library to help react applications managing, loading and applying translations.
 
 ## Usage
 Simple example of translation
 
+Add context on top of page
 ```javascript
-import TranslationJS, { T } from "@pedro_s/translation.js"
-TranslationJS.LoadTranslation("pt", { user: { name: "nome" } }, true)
-T("user.name")
+import TranslationJSContext from "react-translation.js"
+ReactDOM.render(<React.StrictMode><TranslationJSContext><App/></TranslationJSContext></React.StrictMode>, document.getElementById("root"))
 ```
-T will return ```nome```
+Add translation
+```javascript
+import  { LoadTrans, useTranslation } from 'react-translation.js'
+const translation = useTranslation();
+LoadTrans("pt", { global: { missing: { text: "Texto em Falta" } } }, translation, true)
+```
+Use translation
+```javascript
+import  { T } from 'react-translation.js'
+T("global.missing.text")
+```
 
-You can also directly load a ```JSON.parse()``` into the LoadTranslation function  
+T will return ```Texto em Falta```
+
+You can also directly load a ```JSON.parse()``` into the LoadTrans function  
 
 ## Development
 To build the library all you have to do is run the following commands
