@@ -64,7 +64,7 @@ export const T = (value: string) => {
   const v = GetNested(GetSelectedTrans(c).content, ...value.split('.'))
   if (v === undefined)
       return value
-  return v[0].toString()
+  return v.toString()
 }
 
 export default TranslationJSContext
